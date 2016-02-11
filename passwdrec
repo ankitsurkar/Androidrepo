@@ -1,0 +1,10 @@
+go to grub
+type e to edit
+you will find a line starting with linux, go to end of that line and type=> rw init =/bin/bash
+press ctrl+x 
+then to know username type ls /home 
+type passwd username
+type the new password
+enter it again!!
+type reboot if this doesnt work then press ctrl+alt+delete
+your work is done! :D 
