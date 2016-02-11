@@ -1,0 +1,28 @@
+AUTO_MOUNTING
+
+Mounting- Attaching device to the file system tree with path specified.
+File system is a way the OS organizes files on a disk.
+Windows file systems- NTFS, FAT, FAT16
+Macintosh- HFS
+Linux- Ability to access data stored on many different file systems
+
+$ mount- Displays all mounted devices, file system types, mount points, etc
+$ man mount
+Block device- A device that allows reading or writing data in a fixed size blocks, sectors or clusters. Size is generally 512b.
+1st hard drive- /sda, 2nd- /sdb
+/sda is partitioned into /sda1, /sda2
+
+$ man blkid
+$ man lsblk (-o +UUID/+PARTUUID #for showing the uuid or partuuid)
+$ man fstab
+$ sudo mkdir /media/MYDRIVE
+$ sudo vim /etc/fstab
+$ man UUID
+**fstab file is opened**
+On the last line add-
+#My windows drive options
+
+  partition no or UUID            mount point         file system type         options
+        /dev/sda3               /media/MYDRIVE            ntfs              defaults    0     0    
+Save and exit
+$ sudo mount -a
