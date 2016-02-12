@@ -1,0 +1,63 @@
+Installation problems
+
+Why not dynamic?
+Difference between a simple volume and a dynamic disk!
+What happens if disk is dynamic?
+How to check if dynamic, gpt..?
+Disk Part
+
+list disk
+list partition
+list volume
+
+to convert a gpt partition to mbr and vice versa
+list disk to see disks available
+check the disk no
+select disk <diskno>
+clean
+convert mbr/gpt
+
+shift+f10 while in windows installer setup
+bootrec.exe /fixmbr for repairing mbr
+
+bootrec.exe /fixboot to write a new boot sector
+
+bootrec.exe /rebuildbcd to recreate bcd (boot configuration data)
+
+bootrec.exe /scanos to scan OS
+
+clean the Master Boot Record (MBR) by using bootrec /fixmbr. Next, type bootsect.exe /nt60 all /force and press Enter. The /nt60 parameter applies the master boot code that is compatible with BOOTMGR. The /all argument updates the master boot code on all partitions. The /force parameter forcibly dismounts the volume(s) during the boot code update so that the Bootsect.exe tool does not gain exclusive volume access.
+
+installing efi using command prompt 
+diskpart
+list volume
+list volume will list all the recognisable volumes... check for the efi partition... fat32 filesystem 100 mb space 
+sel volume selecting the efi volume
+assign letter=v: assign a random letter 
+a mount point is defined for the given efi partition
+exit diskpart
+
+->cd /d v:\EFI\Microsoft\Boot\
+->bootrec /fixboot
+->ren BCD BCD.old (backing up the old BCD)
+->bcdboot c:\Windows /l en-us /s v: /f ALL (creating the BCD store)
+/l for specifying locale(language)
+/s for specifying volume letter of system partition
+/f for specifying firmware type (UEFI, BIOS or ALL)
+
+creating the efi partition if it's not present 
+diskpart
+list disk
+select disk # Note: Select the disk where you deleted the EFI System partition.
+list partition
+create partition efi
+format quick fs=fat32
+list partition
+list volume 
+exit
+
+shrinking problem 
+(priyanshi)
+
+grub recovery
+ 
