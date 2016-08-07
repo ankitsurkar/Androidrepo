@@ -1,0 +1,4 @@
+#ifndef BOOKATTRIBUTE_H
+#define BOOKATTRIBUTE_H
+
+#endif // BOOKATTRIBUTE_H
